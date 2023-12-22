@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout('Informasi', ~{::div#content}, 'informasi')}"
+    xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tampilkan Informasi - Desa Bantan Air</title>
+</head>
+
+<body>
+
+
+
+    <div id="content" class="display-info-section">
+        <h2>Daftar Informasi</h2>
+       <table border="1px">
+        <tr style="background-color: aqua;">
+            <td>
+                nomor
+            </td>
+            <td>
+                judul
+            </td>
+            <td>
+                isi
+            </td>
+        </tr>
+        <tr th:each="i : ${informasi}">
+            <td th:text="${i.id}"></td>
+            <td th:text="${i.judul}"></td>
+            <td th:text="${i.isi}"></td>
+        </tr>
+       </table>
+    </div>
+
+
+</body>
+
+</html>

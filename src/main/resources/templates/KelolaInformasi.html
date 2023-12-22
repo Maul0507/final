@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout('kelolainformasi', ~{::div#content}, 'kelolainformasi')}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Informasi - Desa Bantan aAir</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Desa Bantan Air</h1>
+    </header>
+
+
+
+    <div id="content" class="manage-info-section">
+        <h2>Kelola Informasi</h2>
+        <form th:action="@{/kelolainformasi}" th:object="${informasi}" method="post">
+            <label for="judul">Judul Informasi:</label>
+            <input type="text" id="judul" name="judul" th:field="*{judul}" required>
+            <br>
+            <label for="isi">Isi Informasi:</label>
+            <textarea id="isi" name="isi" rows="4" th:field="*{isi}" required></textarea>
+            <br>
+            <button type="submit">Simpan Informasi</button>
+        </form>
+    </div>
+
+
+</body>
+</html>

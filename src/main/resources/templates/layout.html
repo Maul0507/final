@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="layout (title, content, menu)" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Website Desa</title>
+</head>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8; /* Warna latar belakang yang lebih terang */
+    }
+
+    header {
+        background-color: #427d5e; /* Hijau cerah */
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav {
+        background-color: #333; /* Warna hitam yang lebih gelap */
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s; /* Efek transisi perubahan warna */
+    }
+
+    nav a:hover {
+        color: #4CAF50; /* Warna hijau saat hover */
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    footer {
+        background-color: #427d5e; /* Warna hijau cerah pada footer */
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+
+<body>
+
+    <header>
+        <h1>Desa Bantan Air</h1>
+    </header>
+
+    <nav>
+        <a th:class="${menu == 'home' ? 'active' : ''}" th:href="@{home}">Home</a>
+        <a th:class="${menu == 'profil' ? 'active' : ''}" th:href="@{/profil}">Profil Desa</a>
+        <a th:class="${menu == 'kelolainformasi' ? 'active' : ''}" th:href="@{/kelolainformasi}">Kelola Informasi</a>
+        <a th:class="${menu == 'informasi' ? 'active' : ''}" th:href="@{/informasi}">Tampilkan Informasi</a>
+        <a th:class="${menu == 'logout' ? 'active' : ''}" th:href="@{/}">Logout</a>
+    </nav>
+    
+    <section>
+        <main th:replace="${content}"></main>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Desa Bantan Air</p>
+    </footer>
+
+</body>
+</html>
