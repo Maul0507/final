@@ -5,7 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Informasi - Desa Bantan aAir</title>
 </head>
+<style>
+#informasi-section {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    padding: 10px;
+    position: relative;
+}
+
+li img {
+    max-width: 100%;
+    height: auto;
+}
+
+.edit, .delete, .publish {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+    </style>
 <body>
 
     <header>
@@ -18,13 +82,25 @@
         <h2>Kelola Informasi</h2>
         <form th:action="@{/kelolainformasi}" th:object="${informasi}" method="post">
             <label for="judul">Judul Informasi:</label>
-            <input type="text" id="judul" name="judul" th:field="*{judul}" required>
+            <input type="text" id="judul" name="judul" required>
             <br>
             <label for="isi">Isi Informasi:</label>
-            <textarea id="isi" name="isi" rows="4" th:field="*{isi}" required></textarea>
+            <textarea id="isi" name="isi" rows="4" required></textarea>
             <br>
-            <button type="submit">Simpan Informasi</button>
+            <label for="gambar">Unggah Gambar:</label>
+            <input type="file" id="gambar" name="gambar" accept="image/*">
+            <br>
+            <button type="submit">Tambah Informasi</button>
         </form>
+
+        <ul id="daftar-informasi"></ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Desa XYZ</p>
+    </footer>
+
+    <script src="script.js"></script>
     </div>
 
 

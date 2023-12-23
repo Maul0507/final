@@ -7,31 +7,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tampilkan Informasi - Desa Bantan Air</title>
 </head>
-
+<style>
+    #informasi-section {
+        max-width: 800px;
+        margin: 20px auto;
+    }
+    
+    .informasi-item {
+        background-color: #fff;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .informasi-content {
+        flex-grow: 1;
+    }
+    
+    .informasi-actions {
+        display: flex;
+        align-items: center;
+    }
+    
+    button {
+        background-color: #333;
+        color: #fff;
+        padding: 8px;
+        margin-right: 5px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #555;
+    }
+    
+</style>
 <body>
 
 
 
     <div id="content" class="display-info-section">
-        <h2>Daftar Informasi</h2>
-       <table border="1px">
-        <tr style="background-color: aqua;">
-            <td>
-                nomor
-            </td>
-            <td>
-                judul
-            </td>
-            <td>
-                isi
-            </td>
-        </tr>
+        <h2>Halaman Informasi</h2>
+        <section id="informasi-section">
+            <div class="informasi-item">
+                <div class="informasi-content">
+                    <h2>Judul Informasi</h2>
+                    <p>Isi informasi disini...</p>
+                </div>
+                <div class="informasi-actions">
+                    <button class="edit-button">Edit</button>
+                    <button class="delete-button">Delete</button>
+                    <button class="publish-button">Publish</button>
+                </div>
+            </div>
         <tr th:each="i : ${informasi}">
             <td th:text="${i.id}"></td>
             <td th:text="${i.judul}"></td>
             <td th:text="${i.isi}"></td>
         </tr>
-       </table>
+    </section>
     </div>
 
 
