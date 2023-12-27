@@ -32,5 +32,6 @@ public class Informasi {
     public void setIsi(String isi) {
         this.isi = isi;
     }
+  
 
 }

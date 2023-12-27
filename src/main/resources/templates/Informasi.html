@@ -5,74 +5,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tampilkan Informasi - Desa Bantan Air</title>
+    <title>Halaman Informasi</title>
+    <link rel="stylesheet" href="@{informasi.css}" type="text/css">
 </head>
-<style>
-    #informasi-section {
-        max-width: 800px;
-        margin: 20px auto;
-    }
-    
-    .informasi-item {
-        background-color: #fff;
-        margin-bottom: 20px;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    .informasi-content {
-        flex-grow: 1;
-    }
-    
-    .informasi-actions {
-        display: flex;
-        align-items: center;
-    }
-    
-    button {
-        background-color: #333;
-        color: #fff;
-        padding: 8px;
-        margin-right: 5px;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-    }
-    
-    button:hover {
-        background-color: #555;
-    }
-    
-</style>
+
 <body>
 
+    <header>
+        <h1>Halaman Informasi</h1>
+    </header>
 
+    <div id="content" style="max-width: 800px; margin: 20px auto;">
+        <div class="informasi-item" style="background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;">
 
-    <div id="content" class="display-info-section">
-        <h2>Halaman Informasi</h2>
-        <section id="informasi-section">
-            <div class="informasi-item">
-                <div class="informasi-content">
-                    <h2>Judul Informasi</h2>
-                    <p>Isi informasi disini...</p>
-                </div>
-                <div class="informasi-actions">
-                    <button class="edit-button">Edit</button>
-                    <button class="delete-button">Delete</button>
-                    <button class="publish-button">Publish</button>
-                </div>
-            </div>
-        <tr th:each="i : ${informasi}">
-            <td th:text="${i.id}"></td>
-            <td th:text="${i.judul}"></td>
-            <td th:text="${i.isi}"></td>
-        </tr>
-    </section>
+            <table class="informasi-content" style="flex-grow: 1; width: 100%; border-collapse: collapse;">
+
+                <tr style="background-color: #f5f5f5; text-align: center;">
+                    <td style="padding: 10px; border: 1px solid #ddd;">Judul</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Isi</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Action</td>
+                </tr>
+                <tr th:each="i : ${informasi}" style="border: 1px solid #ddd;">
+                    <td th:text="${i.judul}" style="padding: 10px;"></td>
+                    <td th:text="${i.isi}" style="padding: 10px;"></td>
+                    <td class="informasi-actions" style="display: flex; align-items: center; padding: 10px;">
+
+                        <a th:href="@{/update/{id}(id=${i.id})}" class="edit-button" style="background-color: #333;
+                            color: #fff ;
+                            padding: 8px;
+                            margin-right: 5px;
+                            border: none;
+                            border-radius: 3px;
+                            cursor: pointer;">Edit</a>
+                        <a th:href="@{/delete/{id}(id=${i.id})}" class="delete-button" style="background-color: #333;
+                            color: #fff;
+                            padding: 8px;
+                            margin-right: 5px;
+                            border: none;
+                            border-radius: 3px;
+                            cursor: pointer; text-decoration: none;">Delete</a>
+                        <button class="publish-button" style="background-color: #333;
+                            color: #fff;
+                            padding: 8px;
+                            margin-right: 5px;
+                            border: none;
+                            border-radius: 3px;
+                            cursor: pointer;">Publish</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
+    <footer style="background-color: #333; color: #fff; padding: 10px; text-align: center; position: fixed; bottom: 0; width: 100%;">
+        <p>&copy; 2023 Desa XYZ</p>
+    </footer>
 
 </body>
 

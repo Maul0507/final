@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::title}, ~{::div#content}, 'employers')}" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${judulForm}">Edit Informasi</title>
+    </head>
+    <body>
+        <div id="content">
+            <h2 th:text="${judulForm}">Edit Informasi</h2>
+            <!-- Form to add data -->
+            <form th:action="@{'/update/' + ${Informasi.id}}" th:object="${Informasi}" method="post">
+                <div class="form-group">
+                    <label for="judul">judul</label>
+                    <input type="text" class="form-control" id="judul" judul="judul" th:field="*{judul}" required>
+                </div>
+                <div class="form-group">
+                    <label for="isi">Isi</label>
+                    <input type="text" class="form-control" id="isi" judul="isi" th:field="*{isi}" required>
+                </div>
+                <div class="btn-group">
+                    <a th:href="@{/}" class="btn btn-danger px-4">Close</a>
+                    <button type="submit" class="btn btn-primary px-3 ml-2">Submit</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

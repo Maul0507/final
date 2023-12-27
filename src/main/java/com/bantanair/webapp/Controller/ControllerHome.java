@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bantanair.webapp.Model.Informasi;
@@ -56,6 +57,41 @@ public class ControllerHome {
         return "Profil";
     }
 
+   @GetMapping("/delete/{id}")
+    public String deleteInformasi(@PathVariable Integer id) {
 
+        try {
+            informasiService.deleteinformasi(id);
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return "redirect:/informasi";
+    }
+
+    @GetMapping("/update/{id}")
+    public String showUpdateForm(@PathVariable Integer id, Model model) {
+        String judulForm = "Update form";
+        Informasi informasi = informasiService.getInformasiById(id);
+        model.addAttribute("judulForm", judulForm);
+        model.addAttribute("Informasi", informasi);
+        return "Update";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateInformasi(@PathVariable Integer id, Informasi Informasi) {
+        try {
+            Informasi updatedInformasi = informasiService.updateinformasi(id, Informasi);
+            if (updatedInformasi != null) {
+                return "redirect:/informasi"; 
+            } else {
+                return "update-failed";
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); 
+            return "update-error";
+        }
+    }
 
 }
