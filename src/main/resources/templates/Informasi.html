@@ -1,72 +1,111 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{layout :: layout('Informasi', ~{::div#content}, 'informasi')}"
-    xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Halaman Informasi</title>
-    <link rel="stylesheet" href="@{informasi.css}" type="text/css">
-</head>
+    <style>
+        /* informasi.css */
 
-<body>
+        body {
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
 
-    <header>
-        <h1>Halaman Informasi</h1>
-    </header>
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
 
-    <div id="content" style="max-width: 800px; margin: 20px auto;">
-        <div class="informasi-item" style="background-color: #fff;
+        h1 {
+            margin: 0;
+        }
+
+        #content {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .informasi-item {
+            background-color: #fff;
             margin-bottom: 20px;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             display: flex;
-            justify-content: space-between;">
+            justify-content: space-between;
+        }
 
-            <table class="informasi-content" style="flex-grow: 1; width: 100%; border-collapse: collapse;">
+        .informasi-content {
+            flex-grow: 1;
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-                <tr style="background-color: #f5f5f5; text-align: center;">
-                    <td style="padding: 10px; border: 1px solid #ddd;">Judul</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Isi</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Action</td>
-                </tr>
-                <tr th:each="i : ${informasi}" style="border: 1px solid #ddd;">
-                    <td th:text="${i.judul}" style="padding: 10px;"></td>
-                    <td th:text="${i.isi}" style="padding: 10px;"></td>
-                    <td class="informasi-actions" style="display: flex; align-items: center; padding: 10px;">
+        .informasi-content th {
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
 
-                        <a th:href="@{/update/{id}(id=${i.id})}" class="edit-button" style="background-color: #333;
-                            color: #fff ;
-                            padding: 8px;
-                            margin-right: 5px;
-                            border: none;
-                            border-radius: 3px;
-                            cursor: pointer;">Edit</a>
-                        <a th:href="@{/delete/{id}(id=${i.id})}" class="delete-button" style="background-color: #333;
-                            color: #fff;
-                            padding: 8px;
-                            margin-right: 5px;
-                            border: none;
-                            border-radius: 3px;
-                            cursor: pointer; text-decoration: none;">Delete</a>
-                        <button class="publish-button" style="background-color: #333;
-                            color: #fff;
-                            padding: 8px;
-                            margin-right: 5px;
-                            border: none;
-                            border-radius: 3px;
-                            cursor: pointer;">Publish</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
+        .informasi-content td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
 
-    <footer style="background-color: #333; color: #fff; padding: 10px; text-align: center; position: fixed; bottom: 0; width: 100%;">
-        <p>&copy; 2023 Desa XYZ</p>
-    </footer>
+        .informasi-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly; /* Center-align and distribute space evenly */
+            padding: 10px;
+        }
 
+        .edit-button,
+        .delete-button,
+        .publish-button {
+            background-color: #333;
+            align-items: center;
+            text-align: center;
+            font-size: medium;
+            color: #fff;
+            padding: 8px;
+            margin-right: 5px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 80px; /* Set the same width for all buttons */
+        }
+    </style>
+</head>
+
+<body th:replace="layout :: layout('Kelola Informasi', ~{::div#content}, 'kelolainformasi')">
+<header>
+    <h1>Halaman Informasi</h1>
+</header>
+
+<div id="content" class="informasi-item">
+    <table class="informasi-content">
+        <tr>
+            <th>Judul</th>
+            <th>Isi</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="i : ${informasi}">
+            <td th:text="${i.judul}"></td>
+            <td th:text="${i.isi}"></td>
+            <td class="informasi-actions">
+                <a th:href="@{/update/{id}(id=${i.id})}" class="edit-button">Edit</a>
+                <a th:href="@{/delete/{id}(id=${i.id})}" class="delete-button">Delete</a>
+                <button class="publish-button">Publish</button>
+            </td>
+        </tr>
+    </table>
+</div>
 </body>
-
 </html>

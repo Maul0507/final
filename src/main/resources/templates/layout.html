@@ -4,55 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${title}">Website Desa</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8; /* Warna latar belakang yang lebih terang */
+        }
+
+        header {
+            background-color: #427d5e; /* Hijau cerah */
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333; /* Warna hitam yang lebih gelap */
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s; /* Efek transisi perubahan warna */
+        }
+
+        nav a:hover {
+            color: #4CAF50; /* Warna hijau saat hover */
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #427d5e; /* Warna hijau cerah pada footer */
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
-<style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f8f8f8; /* Warna latar belakang yang lebih terang */
-    }
-
-    header {
-        background-color: #427d5e; /* Hijau cerah */
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-    }
-
-    nav {
-        background-color: #333; /* Warna hitam yang lebih gelap */
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-    }
-
-    nav a {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 10px;
-        transition: color 0.3s; /* Efek transisi perubahan warna */
-    }
-
-    nav a:hover {
-        color: #4CAF50; /* Warna hijau saat hover */
-    }
-
-    section {
-        padding: 20px;
-    }
-
-    footer {
-        background-color: #427d5e; /* Warna hijau cerah pada footer */
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-</style>
-
 <body>
 
     <header>
